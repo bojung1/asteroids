@@ -1,10 +1,19 @@
 import pygame
 from constants import *
-import player
 from circleshape import *
+from player import * 
 
 def main():
     pygame.init()
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    
+    Player.containers = (updatable, drawable)
+
+
+
+ 
 
     print ("Starting Asteroids!")
     print (f"Screen width: {SCREEN_WIDTH}")
@@ -15,15 +24,22 @@ def main():
     gameclock = pygame.time.Clock()
     dt = 0
 
-    player1 = player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) 
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) 
+
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                  return
         
+        
         screen.fill((0,0,1))
-        player1.draw(screen) 
+        
+        updatable.update(dt)
+
+        for drawablething in drawable:
+            drawablething.draw(screen)
+
         pygame.display.flip()
         dt = gameclock.tick(60)/1000
 
