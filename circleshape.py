@@ -27,7 +27,7 @@ class CircleShape(pygame.sprite.Sprite):
     def coll_check(self, shape2):
         #distance_to(Vector2) -> float
 
-        if pygame.math.Vector2.distance_to(self.position, shape2.position) < (self.radius + shape2.radius):
+        if self.position.distance_to(shape2.position) <= (self.radius + shape2.radius):
             return True
         else: 
             return False
