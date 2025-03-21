@@ -8,7 +8,7 @@ class Shot(CircleShape):
 		self.radius = SHOT_RADIUS
 
 	def draw(self, screen):
-		pygame.draw.circle(screen, pygame.Color("white"), self.position, self.radius, 2)
+		pygame.draw.circle(screen, pygame.Color("red"), self.position, self.radius, 2)
 
 
 	def update(self, dt):
